@@ -1,12 +1,12 @@
 import {Request, Response} from 'express';
-import ContactModel from '../models/ContactModel';
 import {ProductService} from '../services/ProductService';
+import {NewsService} from '../services/NewsService';
 
-export class ProductController {
-  private service: ProductService;
+export class NewsController {
+  private service: NewsService;
 
   constructor() {
-    this.service = new ProductService();
+    this.service = new NewsService();
   }
 
   create = async (req: Request, res: Response) => {
@@ -43,7 +43,15 @@ export class ProductController {
 
   getAll = async (req: Request, res: Response) => {
     try {
-      const r = await this.service.getAll();
+      const {page = 1, limit = 5, year = ''} = req.query as any;
+      let query = {};
+      if(year && parseInt(year)) {
+        query = { date: { $gte: new Date(year, 0, 1), $lte: new Date(year, 11, 31) } }
+      }
+      const r = await this.service.getAll( query, {
+        page: +page,
+        limit: +limit
+      });
       return res.status(200).send(r);
     }
     catch (e) {
@@ -55,6 +63,16 @@ export class ProductController {
     try {
       const {id} = req.params;
       const r = await this.service.getOne(id);
+      return res.status(200).send(r);
+    }
+    catch (e) {
+      return res.status(400).send(e);
+    }
+  };
+
+  getYearNews = async (req: Request, res: Response) => {
+    try {
+      const r = await this.service.getAll({});
       return res.status(200).send(r);
     }
     catch (e) {

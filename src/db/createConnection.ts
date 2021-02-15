@@ -1,10 +1,7 @@
 import mongoose = require('mongoose');
-import config from '../config';
+import {dbURI} from '../config';
 
 
-const authURI = config.username && config.password ? `${config.username}:${config.password}@` : '';
-//const dbURI = `mongodb+srv://${authURI}${config.host}/${config.database}`;
-const dbURI = `mongodb://localhost:27017/test`;
 
 async function createConnection() {
   await mongoose.connect(dbURI, {useNewUrlParser: true, useUnifiedTopology: true});
