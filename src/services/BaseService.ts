@@ -1,5 +1,5 @@
-import IBaseService from '../interfaces/IBaseService';
-import {Document, FilterQuery, PaginateModel, PaginateOptions, Query} from 'mongoose';
+import IBaseService, {IDQ, IGet, IPR} from '../interfaces/IBaseService';
+import {Document, DocumentQuery, FilterQuery, PaginateModel, PaginateOptions, PaginateResult, Query} from 'mongoose';
 import {query} from 'express';
 
 class BaseService<T, D = Document> implements IBaseService<T, D> {
@@ -15,9 +15,10 @@ class BaseService<T, D = Document> implements IBaseService<T, D> {
     })
   };
 
-  getAll: (query?: FilterQuery<D>, options?: PaginateOptions) => Query<Array<Document<T>>, Document<T>> = (query = {}, options = {}) => {
+  // @ts-ignore
+  getAll: (query?: FilterQuery<D>, options?: PaginateOptions) => any = async (query = {}, options = {}) => {
     if(this.document.paginate) {
-      return this.document.paginate(query, options) as any;
+      return await this.document.paginate(query, options);
     }
     return this.document.find(query);
   };

@@ -7,6 +7,8 @@ import ContactRoute from './routes/ContactRoute';
 import config from './config';
 import {NewsService} from './services/NewsService';
 import NewsRoute from './routes/NewsRoute';
+import {Document, PaginateResult} from "mongoose";
+import CategoryRoute from './routes/CategoryRoute';
 
 const prefix = '/api/v1';
 
@@ -27,17 +29,11 @@ app.get(prefix + '/', (req, res) => {
 app.use(prefix + '/products', ProductRoute);
 app.use(prefix + '/contact', ContactRoute);
 app.use(prefix + '/news', NewsRoute);
+app.use(prefix + '/categories', CategoryRoute);
 
 createConnection()
   .then(async () => {
 
-    new NewsService().getAll({}, {
-      select: {
-        date: 1
-      }
-    }).then(async res => {
-      console.log(res)
-    })
     app.listen(config.port, () => {
       console.log('Server ' + config.port)
     });

@@ -1,14 +1,11 @@
 import {Request, Response} from 'express';
-import {ProductService} from '../services/ProductService';
-import {NewsService} from '../services/NewsService';
-import {IPR} from '../interfaces/IBaseService';
-import {INews} from '../db/models/NewsModel';
+import {CategoryService} from '../services/CategoryService';
 
-export class NewsController {
-  private service: NewsService;
+export class CategoryController {
+  private service: CategoryService;
 
   constructor() {
-    this.service = new NewsService();
+    this.service = new CategoryService();
   }
 
   create = async (req: Request, res: Response) => {
@@ -45,21 +42,12 @@ export class NewsController {
 
   getAll = async (req: Request, res: Response) => {
     try {
-      const {page = 1, limit = 5, year = ''} = req.query as any;
-      let query = {};
-      if(year && parseInt(year)) {
-        query = { date: { $gte: new Date(year, 0, 1), $lte: new Date(year, 11, 31) } }
-      }
-      const r = await this.service.getAll( query, {
-        page: +page,
-        limit: +limit,
-        sort: {
-          date: -1
-        }
-      });
+      const r = await this.service.getAll();
+      console.log(r)
       return res.status(200).send(r);
     }
     catch (e) {
+      console.log(e)
       return res.status(400).send(e);
     }
   };
