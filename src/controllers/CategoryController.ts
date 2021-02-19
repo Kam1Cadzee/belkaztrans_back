@@ -1,5 +1,6 @@
 import {Request, Response} from 'express';
 import {CategoryService} from '../services/CategoryService';
+import {HTTP500Error} from '../utils/httpErrors';
 
 export class CategoryController {
   private service: CategoryService;
@@ -14,7 +15,7 @@ export class CategoryController {
       return res.status(200).send(r);
     }
     catch (e) {
-      return res.status(400).send(e);
+      throw new HTTP500Error('Error: ' + e);
     }
   };
 
@@ -25,7 +26,7 @@ export class CategoryController {
       return res.status(200).send(r);
     }
     catch (e) {
-      return res.status(400).send(e);
+      throw new HTTP500Error('Error: ' + e);
     }
   };
 
@@ -36,19 +37,17 @@ export class CategoryController {
       return res.status(200).send(r);
     }
     catch (e) {
-      return res.status(400).send(e);
+      throw new HTTP500Error('Error: ' + e);
     }
   };
 
   getAll = async (req: Request, res: Response) => {
     try {
       const r = await this.service.getAll();
-      console.log(r)
       return res.status(200).send(r);
     }
     catch (e) {
-      console.log(e)
-      return res.status(400).send(e);
+      throw new HTTP500Error('Error: ' + e);
     }
   };
 
@@ -59,7 +58,7 @@ export class CategoryController {
       return res.status(200).send(r);
     }
     catch (e) {
-      return res.status(400).send(e);
+      throw new HTTP500Error('Error: ' + e);
     }
   };
 }

@@ -23,8 +23,8 @@ class BaseService<T, D = Document> implements IBaseService<T, D> {
     return this.document.find(query);
   };
 
-  getOne: (id) => Query<Document<T> | null, Document<T>> = id => {
-    return this.document.findById(id);
+  getOne = id => {
+    return this.document.findById(id) as any;
   };
 
   update: (data, id) => Query<Document<T> | null, Document<T>> = (data, id) => {
@@ -32,6 +32,10 @@ class BaseService<T, D = Document> implements IBaseService<T, D> {
       _id: id
     }, data);
   };
+
+  getDocument = () => {
+    return this.document;
+  }
 }
 
 export default BaseService;

@@ -1,9 +1,10 @@
 // In this file you can configure migrate-mongo
+const conf = require("../../../config.ts");
 
 const config = {
   mongodb: {
     // TODO Change (or review) the url to your MongoDB:
-    url: 'mongodb://localhost:27017/test',
+    url: conf.dbURI,
 
     options: {
       useNewUrlParser: true, // removes a deprecation warning when connecting
@@ -14,7 +15,7 @@ const config = {
   },
 
   // The migrations dir, can be an relative or absolute path. Only edit this when really necessary.
-  migrationsDir: "migrations",
+  migrationsDir: "./src/db/migrations/mongo/migrations",
 
   // The mongodb collection where the applied changes are stored. Only edit this when really necessary.
   changelogCollectionName: "changelog",

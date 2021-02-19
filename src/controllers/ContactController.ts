@@ -1,5 +1,6 @@
 import {Request, Response} from 'express';
 import {ContactService} from '../services/ContactService';
+import {HTTP500Error} from '../utils/httpErrors';
 
 export class ContactController {
   private service: ContactService;
@@ -13,7 +14,7 @@ export class ContactController {
       const r = await this.service.create(req.body);
       return res.status(200).send(r);
     } catch (e) {
-      return res.status(400).send(e);
+      throw new HTTP500Error('Error: ' + e);
     }
   };
 
@@ -23,7 +24,7 @@ export class ContactController {
       const r = await this.service.update(req.body, id);
       return res.status(200).send(r);
     } catch (e) {
-      return res.status(400).send(e);
+      throw new HTTP500Error('Error: ' + e);
     }
   };
 
@@ -33,7 +34,7 @@ export class ContactController {
       const r = await this.service.delete(id);
       return res.status(200).send(r);
     } catch (e) {
-      return res.status(400).send(e);
+      throw new HTTP500Error('Error: ' + e);
     }
   };
 
@@ -43,7 +44,7 @@ export class ContactController {
       return res.status(200).send(r);
     }
     catch (e) {
-      return res.status(400).send(e);
+      throw new HTTP500Error('Error: ' + e);
     }
   };
 
@@ -54,7 +55,7 @@ export class ContactController {
       return res.status(200).send(r);
     }
     catch (e) {
-      return res.status(400).send(e);
+      throw new HTTP500Error('Error: ' + e);
     }
   };
 }

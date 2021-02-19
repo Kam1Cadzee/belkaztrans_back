@@ -14,6 +14,7 @@ const definition = {
     type: String,
     required: true
   },
+  file: String,
 };
 
 const ProductSchema = new Schema({
@@ -25,6 +26,7 @@ const ProductModel = mongoose.model('Product', ProductSchema);
 
 interface IProduct extends BaseType {
   code: string,
+  file: string,
   fuels: IFuel[],
 }
 

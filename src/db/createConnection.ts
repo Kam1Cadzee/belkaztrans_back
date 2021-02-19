@@ -1,10 +1,10 @@
 import mongoose = require('mongoose');
-import {dbURI} from '../config';
+const config = require('../config');
 
 
 
 async function createConnection() {
-  await mongoose.connect(dbURI, {useNewUrlParser: true, useUnifiedTopology: true});
+  await mongoose.connect(config.dbURI, {useNewUrlParser: true, useUnifiedTopology: true});
 
   const connection = mongoose.connection;
 
@@ -18,7 +18,7 @@ async function createConnection() {
 }
 
 async function getConnection(){
-  await mongoose.connect(dbURI, {useNewUrlParser: true, useUnifiedTopology: true});
+  await mongoose.connect(config.dbURI, {useNewUrlParser: true, useUnifiedTopology: true});
   return mongoose.connection;
 }
 

@@ -1,13 +1,14 @@
 require('dotenv').config();
 
 const config = {
-  username: process.env.USER_NAME,
-  password: process.env.PASSWORD,
-  host: process.env.HOST,
-  database: process.env.DATA_BASE,
-  portDB: process.env.PORT_DB,
-  isDev: process.env.NODE_ENV,
-  port: process.env.PORT,
+  username: process.env.BE_USER_NAME,
+  password: process.env.BE_PASSWORD,
+  host: process.env.BE_HOST,
+  database: process.env.BE_DATA_BASE,
+  portDB: process.env.BE_PORT_DB,
+  isDev: process.env.BE_NODE_ENV,
+  port: process.env.BE_PORT,
+  dbURI: ''
 };
 
 let dbURI = '';
@@ -19,5 +20,6 @@ else {
   dbURI = config.username && config.password ? `${config.username}:${config.password}@` : '';
 }
 
-export {dbURI};
-export default config;
+config.dbURI = dbURI;
+
+module.exports = config;

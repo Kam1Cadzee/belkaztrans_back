@@ -1,14 +1,15 @@
+import 'express-async-errors';
 import express from 'express';
 import cors from 'cors';
 import * as bodyParser from 'body-parser';
 import {createConnection} from './db/createConnection';
 import ProductRoute from './routes/ProductRoute';
 import ContactRoute from './routes/ContactRoute';
-import config from './config';
-import {NewsService} from './services/NewsService';
 import NewsRoute from './routes/NewsRoute';
-import {Document, PaginateResult} from "mongoose";
 import CategoryRoute from './routes/CategoryRoute';
+import requestErrorHandler from './middlewares/requestErrorHandler';
+import {applyMiddleware} from './utils/applyMiddleware';
+const config = require('./config');
 
 const prefix = '/api/v1';
 
@@ -31,11 +32,13 @@ app.use(prefix + '/contact', ContactRoute);
 app.use(prefix + '/news', NewsRoute);
 app.use(prefix + '/categories', CategoryRoute);
 
+applyMiddleware(requestErrorHandler, app);
+
 createConnection()
   .then(async () => {
 
     app.listen(config.port, () => {
-      console.log('Server ' + config.port)
+      console.log('Start server: ' + config.port)
     });
   })
   .catch(e => {

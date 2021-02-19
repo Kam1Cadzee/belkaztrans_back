@@ -1,8 +1,6 @@
 import {Request, Response} from 'express';
-import {ProductService} from '../services/ProductService';
 import {NewsService} from '../services/NewsService';
-import {IPR} from '../interfaces/IBaseService';
-import {INews} from '../db/models/NewsModel';
+import {HTTP500Error} from '../utils/httpErrors';
 
 export class NewsController {
   private service: NewsService;
@@ -17,7 +15,7 @@ export class NewsController {
       return res.status(200).send(r);
     }
     catch (e) {
-      return res.status(400).send(e);
+      throw new HTTP500Error('Error: ' + e);
     }
   };
 
@@ -28,7 +26,7 @@ export class NewsController {
       return res.status(200).send(r);
     }
     catch (e) {
-      return res.status(400).send(e);
+      throw new HTTP500Error('Error: ' + e);
     }
   };
 
@@ -39,7 +37,7 @@ export class NewsController {
       return res.status(200).send(r);
     }
     catch (e) {
-      return res.status(400).send(e);
+      throw new HTTP500Error('Error: ' + e);
     }
   };
 
@@ -60,7 +58,7 @@ export class NewsController {
       return res.status(200).send(r);
     }
     catch (e) {
-      return res.status(400).send(e);
+      throw new HTTP500Error('Error: ' + e);
     }
   };
 
@@ -71,7 +69,7 @@ export class NewsController {
       return res.status(200).send(r);
     }
     catch (e) {
-      return res.status(400).send(e);
+      throw new HTTP500Error('Error: ' + e);
     }
   };
 }
