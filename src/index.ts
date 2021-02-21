@@ -29,7 +29,7 @@ app.get(prefix + '/', (req, res) => {
 });
 
 app.use(prefix + '/products', ProductRoute);
-app.use(prefix + '/contact', ContactRoute);
+app.use(prefix + '/contacts', ContactRoute);
 app.use(prefix + '/news', NewsRoute);
 app.use(prefix + '/categories', CategoryRoute);
 app.use(prefix + '/fuels', FuelRoute);

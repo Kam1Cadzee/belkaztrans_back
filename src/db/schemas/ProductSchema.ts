@@ -12,6 +12,16 @@ const definition = {
     type: String,
     required: true
   },
+  contact: {
+    fullNameEN: String,
+    fullNameRU: String,
+    fullNameUA: String,
+    positionEN: String,
+    positionRU: String,
+    positionUA: String,
+    phone: String,
+    email: String,
+  }
 };
 
 const ProductSchema = new Schema({

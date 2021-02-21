@@ -20,7 +20,7 @@ export class BaseService<T, D = Document> implements IBaseService<T, D> {
     if(this.document.paginate) {
       return await this.document.paginate(query, options);
     }
-    return this.document.find(query);
+    return this.document.find(query).populate('fuels');
   };
 
   getOne = id => {

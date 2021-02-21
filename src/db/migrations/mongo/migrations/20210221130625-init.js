@@ -14,7 +14,7 @@ const desc1 = `<article class="product-content">
       </ul>
       <p class="caption">Более подробную информацию по бензину АИ-98-К5-Евро можно найти на сайте
         производителя.</p>
-      <p class="site"><a href="#" target="_blank">www.mnpz.by</a></p>
+      <p class="site"><a href="https://www.mnpz.by/" target="_blank">www.mnpz.by</a></p>
       Ценообразование — по фиксированным ценам/ поставки по формульному ценообразованию, основанного на котировках
       международных бирж (котировки агентств “Argus” и “Platts”).
     </article>`;
@@ -34,7 +34,7 @@ const desc2 = `<article class="product-content">
       </ul>
       <p class="caption">Более подробную информацию по бензину АИ-95-К5-Евро можно найти на сайте
         производителя.</p>
-      <p class="site"><a href="#" target="_blank">www.mnpz.by</a></p>
+      <p class="site"><a href="https://www.mnpz.by/" target="_blank">www.mnpz.by</a></p>
       Ценообразование — по фиксированным ценам/ поставки по формульному ценообразованию, основанного на котировках
       международных бирж (котировки агентств “Argus” и “Platts”).
     </article>`;
@@ -54,7 +54,7 @@ const desc3 = `<article class="product-content">
       </ul>
       <p class="caption">Более подробную информацию по бензину АИ-92-К5-Евро можно найти на сайте
         производителя.</p>
-      <p class="site"><a href="#" target="_blank">www.mnpz.by</a></p>
+      <p class="site"><a href="https://www.mnpz.by/" target="_blank">www.mnpz.by</a></p>
       Ценообразование — по фиксированным ценам/ поставки по формульному ценообразованию, основанного на котировках
       международных бирж (котировки агентств “Argus” и “Platts”).
     </article>`;
@@ -66,7 +66,7 @@ const desc4 = `<article class="product-content">
                         <li>- требованиям европейского стандарта EN 590 «Топлива для двигателей внутреннего сгорания. Топливо дизельное. Технические требования и методы испытаний».</li>
                     </ul>
                     <p class="caption">Более подробную информацию по бензину АИ-92-К5-Евро можно найти на сайте производителя.</p>
-                    <p class="site"><a href="#" target="_blank">www.mnpz.by</a></p>
+                    <p class="site"><a href="https://www.mnpz.by/" target="_blank">www.mnpz.by</a></p>
                     Ценообразование — по фиксированным ценам/ поставки по формульному ценообразованию, основанного на котировках международных бирж (котировки агентств “Argus” и “Platts”).
                 </article>`;
 const desc5 = `<article class="product-content">
@@ -187,219 +187,249 @@ const darkDescRU10 = `<article class="product-content">В сотрудничес
 
 module.exports = {
   async up(db, client) {
-      const data = [
-        {
-          "titleEN": "Железнодорожное экспедирование грузов",
-          "titleRU": "Железнодорожное экспедирование грузов",
-          "titleUA": "Железнодорожное экспедирование грузов",
-          "code": "cargo",
-          "fuels": [
-          ]
-        },
-        {
-          "titleEN": "Импорт светлых нефтепродуктов",
-          "titleRU": "Импорт светлых нефтепродуктов",
-          "titleUA": "Импорт светлых нефтепродуктов",
-          "code": "light",
-          "fuels": [
-            {
-              "titleEN": "Бензин неэтилированный А-98-К5-Евро",
-              "titleRU": "Бензин неэтилированный А-98-К5-Евро",
-              "titleUA": "Бензин неэтилированный А-98-К5-Евро",
-              "price": 1200,
-              "shortTitleEN": "Бензины А98",
-              "shortTitleUA": "Бензины А98",
-              "shortTitleRU": "Бензины А98",
-
-              "descriptionEN": desc1,
-              "descriptionUA": desc1,
-              "descriptionRU": desc1
-            },
-            {
-              "titleEN": "Бензин неэтилированный А-95-К5-Евро",
-              "titleRU": "Бензин неэтилированный А-95-К5-Евро",
-              "titleUA": "Бензин неэтилированный А-95-К5-Евро",
-              "price": 1200,
-              "shortTitleEN": "Бензины А95",
-              "shortTitleUA": "Бензины А95",
-              "shortTitleRU": "Бензины А95",
-
-              "descriptionEN": desc2,
-              "descriptionUA": desc2,
-              "descriptionRU": desc2
-            },
-            {
-              "titleEN": "Бензин неэтилированный А-92-К5-Евро",
-              "titleRU": "Бензин неэтилированный А-92-К5-Евро",
-              "titleUA": "Бензин неэтилированный А-92-К5-Евро",
-              "price": 1100,
-              "shortTitleEN": "Бензины А92",
-              "shortTitleUA": "Бензины А92",
-              "shortTitleRU": "Бензины А92",
-
-              "descriptionEN": desc3,
-              "descriptionUA": desc3,
-              "descriptionRU": desc3
-            },
-            {
-              "titleEN": "Дизельное топливо",
-              "titleRU": "Дизельное топливо",
-              "titleUA": "Дизельное топливо",
-              "price": 1200,
-              "shortTitleEN": "Дизельное топливо",
-              "shortTitleUA": "Дизельное топливо",
-              "shortTitleRU": "Дизельное топливо",
-
-              "descriptionEN": desc4,
-              "descriptionUA": desc4,
-              "descriptionRU": desc4
-            }
-          ]
-        },
-        {
-          "titleEN": "Импорт темных нефтепродуктов",
-          "titleRU": "Импорт темных нефтепродуктов",
-          "titleUA": "Импорт темных нефтепродуктов",
-          "code": "dark",
-          "fuels": [
-            {
-              "titleEN": "Битум дорожный СТБ EN 12591",
-              "titleRU": "Битум дорожный СТБ EN 12591",
-              "titleUA": "Битум дорожный СТБ EN 12591",
-              "price": 1200,
-              "shortTitleEN": "Битум дорожный СТБ EN 12591",
-              "shortTitleUA": "Битум дорожный СТБ EN 12591",
-              "shortTitleRU": "Битум дорожный СТБ EN 12591",
-
-              "descriptionEN": "string",
-              "descriptionUA": "string",
-              "descriptionRU": darkDescRU1
-            },
-            {
-              "titleEN": "Анионная битумная эмульсия «Elementum»",
-              "titleRU": "Анионная битумная эмульсия «Elementum»",
-              "titleUA": "Анионная битумная эмульсия «Elementum»",
-              "price": 1200,
-              "shortTitleEN": "Анионная битумная эмульсия «Elementum»",
-              "shortTitleUA": "Анионная битумная эмульсия «Elementum»",
-              "shortTitleRU": "Анионная битумная эмульсия «Elementum»",
-
-              "descriptionEN": "string",
-              "descriptionUA": "string",
-              "descriptionRU": darkDescRU2
-            },
-            {
-              "titleEN": "Эмульсии битумные катионные дорожные",
-              "titleRU": "Эмульсии битумные катионные дорожные",
-              "titleUA": "Эмульсии битумные катионные дорожные",
-              "price": 1200,
-              "shortTitleEN": "Эмульсии битумные катионные дорожные",
-              "shortTitleUA": "Эмульсии битумные катионные дорожные",
-              "shortTitleRU": "Эмульсии битумные катионные дорожные",
-
-              "descriptionEN": "string",
-              "descriptionUA": "string",
-              "descriptionRU": darkDescRU3
-            },{
-              "titleEN": "Битум дорожный модифицированный",
-              "titleRU": "Битум дорожный модифицированный",
-              "titleUA": "Битум дорожный модифицированный",
-              "price": 1200,
-              "shortTitleEN": "Битум дорожный модифицированный",
-              "shortTitleUA": "Битум дорожный модифицированный",
-              "shortTitleRU": "Битум дорожный модифицированный",
-
-              "descriptionEN": "string",
-              "descriptionUA": "string",
-              "descriptionRU": darkDescRU4
-            },
-            {
-              "titleEN": "Мастика герметизирующая битумно-эластомерная",
-              "titleRU": "Мастика герметизирующая битумно-эластомерная",
-              "titleUA": "Мастика герметизирующая битумно-эластомерная",
-              "price": 1200,
-              "shortTitleEN": "Мастика герметизирующая битумно-эластомерная",
-              "shortTitleUA": "Мастика герметизирующая битумно-эластомерная",
-              "shortTitleRU": "Мастика герметизирующая битумно-эластомерная",
-
-              "descriptionEN": "string",
-              "descriptionUA": "string",
-              "descriptionRU": darkDescRU5
-            },
-            {
-              "titleEN": "Мастики кровельные и гидроизоляционные",
-              "titleRU": "Мастики кровельные и гидроизоляционные",
-              "titleUA": "Мастики кровельные и гидроизоляционные",
-              "price": 1200,
-              "shortTitleEN": "Мастики кровельные и гидроизоляционные",
-              "shortTitleUA": "Мастики кровельные и гидроизоляционные",
-              "shortTitleRU": "Мастики кровельные и гидроизоляционные",
-
-              "descriptionEN": "string",
-              "descriptionUA": "string",
-              "descriptionRU": darkDescRU6
-            },
-            {
-              "titleEN": "Битум нефтяной кровельный 40/180",
-              "titleRU": "Битум нефтяной кровельный 40/180",
-              "titleUA": "Битум нефтяной кровельный 40/180",
-              "price": 1200,
-              "shortTitleEN": "Битум нефтяной кровельный 40/180",
-              "shortTitleUA": "Битум нефтяной кровельный 40/180",
-              "shortTitleRU": "Битум нефтяной кровельный 40/180",
-
-              "descriptionEN": "string",
-              "descriptionUA": "string",
-              "descriptionRU": darkDescRU7
-            },
-            {
-              "titleEN": "Битум строительный нефтяной БН 90/10 и 70/30",
-              "titleRU": "Битум строительный нефтяной БН 90/10 и 70/30",
-              "titleUA": "Битум строительный нефтяной БН 90/10 и 70/30",
-              "price": 1200,
-              "shortTitleEN": "Битум строительный нефтяной БН 90/10 и 70/30",
-              "shortTitleUA": "Битум строительный нефтяной БН 90/10 и 70/30",
-              "shortTitleRU": "Битум строительный нефтяной БН 90/10 и 70/30",
-
-              "descriptionEN": "string",
-              "descriptionUA": "string",
-              "descriptionRU": darkDescRU8
-            },
-            {
-              "titleEN": "Фасованные битумы",
-              "titleRU": "Фасованные битумы",
-              "titleUA": "Фасованные битумы",
-              "price": 1200,
-              "shortTitleEN": "Фасованные битумы",
-              "shortTitleUA": "Фасованные битумы",
-              "shortTitleRU": "Фасованные битумы",
-
-              "descriptionEN": "string",
-              "descriptionUA": "string",
-              "descriptionRU": darkDescRU9
-            },
-            {
-              "titleEN": "Вяжущее битумное комплексное",
-              "titleRU": "Вяжущее битумное комплексное",
-              "titleUA": "Вяжущее битумное комплексное",
-              "price": 1200,
-              "shortTitleEN": "Вяжущее битумное комплексное",
-              "shortTitleUA": "Вяжущее битумное комплексное",
-              "shortTitleRU": "Вяжущее битумное комплексное",
-
-              "descriptionEN": "string",
-              "descriptionUA": "string",
-              "descriptionRU": darkDescRU10
-            },
-          ]
+    const data = [
+      {
+        "titleEN": "Железнодорожное экспедирование грузов",
+        "titleRU": "Железнодорожное экспедирование грузов",
+        "titleUA": "Железнодорожное экспедирование грузов",
+        "code": "cargo",
+        "contact": {
+          "fullNameEN": 'Наталья Иванова',
+          "fullNameRU": 'Наталья Иванова',
+          "fullNameUA": 'Наталья Иванова',
+          "positionEN": 'менеджер по продажам',
+          "positionRU": 'менеджер по продажам',
+          "positionUA": 'менеджер по продажам',
+          "phone": '+380 50 111 22 33',
+          "email": 'ivanov@belkaztrans.com',
         }
-      ];
+      },
+      {
+        "titleEN": "Импорт светлых нефтепродуктов",
+        "titleRU": "Импорт светлых нефтепродуктов",
+        "titleUA": "Импорт светлых нефтепродуктов",
+        "code": "light",
+        "contact": {
+          "fullNameEN": 'Иван Иванов',
+          "fullNameRU": 'Иван Иванов',
+          "fullNameUA": 'Иван Иванов',
+          "positionEN": 'менеджер по продажам',
+          "positionRU": 'менеджер по продажам',
+          "positionUA": 'менеджер по продажам',
+          "phone": '+380 50 111 22 33',
+          "email": 'ivanov@belkaztrans.com',
+        },
+        "fuels": [
+          {
+            "titleEN": "Бензин неэтилированный А-98-К5-Евро",
+            "titleRU": "Бензин неэтилированный А-98-К5-Евро",
+            "titleUA": "Бензин неэтилированный А-98-К5-Евро",
+            "price": 1200,
+            "shortTitleEN": "Бензины А98",
+            "shortTitleUA": "Бензины А98",
+            "shortTitleRU": "Бензины А98",
 
-      for(let d of data) {
-        d.fuels = await db.collection('fuels').insertMany(d.fuels);
-        await db.collection('products').create(d);
+            "descriptionEN": desc1,
+            "descriptionUA": desc1,
+            "descriptionRU": desc1
+          },
+          {
+            "titleEN": "Бензин неэтилированный А-95-К5-Евро",
+            "titleRU": "Бензин неэтилированный А-95-К5-Евро",
+            "titleUA": "Бензин неэтилированный А-95-К5-Евро",
+            "price": 1200,
+            "shortTitleEN": "Бензины А95",
+            "shortTitleUA": "Бензины А95",
+            "shortTitleRU": "Бензины А95",
+
+            "descriptionEN": desc2,
+            "descriptionUA": desc2,
+            "descriptionRU": desc2
+          },
+          {
+            "titleEN": "Бензин неэтилированный А-92-К5-Евро",
+            "titleRU": "Бензин неэтилированный А-92-К5-Евро",
+            "titleUA": "Бензин неэтилированный А-92-К5-Евро",
+            "price": 1100,
+            "shortTitleEN": "Бензины А92",
+            "shortTitleUA": "Бензины А92",
+            "shortTitleRU": "Бензины А92",
+
+            "descriptionEN": desc3,
+            "descriptionUA": desc3,
+            "descriptionRU": desc3
+          },
+          {
+            "titleEN": "Дизельное топливо",
+            "titleRU": "Дизельное топливо",
+            "titleUA": "Дизельное топливо",
+            "price": 1200,
+            "shortTitleEN": "Дизельное топливо",
+            "shortTitleUA": "Дизельное топливо",
+            "shortTitleRU": "Дизельное топливо",
+
+            "descriptionEN": desc4,
+            "descriptionUA": desc4,
+            "descriptionRU": desc4
+          }
+        ]
+      },
+      {
+        "titleEN": "Импорт темных нефтепродуктов",
+        "titleRU": "Импорт темных нефтепродуктов",
+        "titleUA": "Импорт темных нефтепродуктов",
+        "code": "dark",
+        "contact": {
+          "fullNameEN": 'Николай Иванов',
+          "fullNameRU": 'Николай Иванов',
+          "fullNameUA": 'Николай Иванов',
+          "positionEN": 'менеджер по продажам',
+          "positionRU": 'менеджер по продажам',
+          "positionUA": 'менеджер по продажам',
+          "phone": '+380 50 111 22 33',
+          "email": 'ivanov@belkaztrans.com',
+        },
+        "fuels": [
+          {
+            "titleEN": "Битум дорожный СТБ EN 12591",
+            "titleRU": "Битум дорожный СТБ EN 12591",
+            "titleUA": "Битум дорожный СТБ EN 12591",
+            "price": 1200,
+            "shortTitleEN": "Битум дорожный СТБ EN 12591",
+            "shortTitleUA": "Битум дорожный СТБ EN 12591",
+            "shortTitleRU": "Битум дорожный СТБ EN 12591",
+
+            "descriptionEN": "string",
+            "descriptionUA": "string",
+            "descriptionRU": darkDescRU1
+          },
+          {
+            "titleEN": "Анионная битумная эмульсия «Elementum»",
+            "titleRU": "Анионная битумная эмульсия «Elementum»",
+            "titleUA": "Анионная битумная эмульсия «Elementum»",
+            "price": 1200,
+            "shortTitleEN": "Анионная битумная эмульсия «Elementum»",
+            "shortTitleUA": "Анионная битумная эмульсия «Elementum»",
+            "shortTitleRU": "Анионная битумная эмульсия «Elementum»",
+
+            "descriptionEN": "string",
+            "descriptionUA": "string",
+            "descriptionRU": darkDescRU2
+          },
+          {
+            "titleEN": "Эмульсии битумные катионные дорожные",
+            "titleRU": "Эмульсии битумные катионные дорожные",
+            "titleUA": "Эмульсии битумные катионные дорожные",
+            "price": 1200,
+            "shortTitleEN": "Эмульсии битумные катионные дорожные",
+            "shortTitleUA": "Эмульсии битумные катионные дорожные",
+            "shortTitleRU": "Эмульсии битумные катионные дорожные",
+
+            "descriptionEN": "string",
+            "descriptionUA": "string",
+            "descriptionRU": darkDescRU3
+          },{
+            "titleEN": "Битум дорожный модифицированный",
+            "titleRU": "Битум дорожный модифицированный",
+            "titleUA": "Битум дорожный модифицированный",
+            "price": 1200,
+            "shortTitleEN": "Битум дорожный модифицированный",
+            "shortTitleUA": "Битум дорожный модифицированный",
+            "shortTitleRU": "Битум дорожный модифицированный",
+
+            "descriptionEN": "string",
+            "descriptionUA": "string",
+            "descriptionRU": darkDescRU4
+          },
+          {
+            "titleEN": "Мастика герметизирующая битумно-эластомерная",
+            "titleRU": "Мастика герметизирующая битумно-эластомерная",
+            "titleUA": "Мастика герметизирующая битумно-эластомерная",
+            "price": 1200,
+            "shortTitleEN": "Мастика герметизирующая битумно-эластомерная",
+            "shortTitleUA": "Мастика герметизирующая битумно-эластомерная",
+            "shortTitleRU": "Мастика герметизирующая битумно-эластомерная",
+
+            "descriptionEN": "string",
+            "descriptionUA": "string",
+            "descriptionRU": darkDescRU5
+          },
+          {
+            "titleEN": "Мастики кровельные и гидроизоляционные",
+            "titleRU": "Мастики кровельные и гидроизоляционные",
+            "titleUA": "Мастики кровельные и гидроизоляционные",
+            "price": 1200,
+            "shortTitleEN": "Мастики кровельные и гидроизоляционные",
+            "shortTitleUA": "Мастики кровельные и гидроизоляционные",
+            "shortTitleRU": "Мастики кровельные и гидроизоляционные",
+
+            "descriptionEN": "string",
+            "descriptionUA": "string",
+            "descriptionRU": darkDescRU6
+          },
+          {
+            "titleEN": "Битум нефтяной кровельный 40/180",
+            "titleRU": "Битум нефтяной кровельный 40/180",
+            "titleUA": "Битум нефтяной кровельный 40/180",
+            "price": 1200,
+            "shortTitleEN": "Битум нефтяной кровельный 40/180",
+            "shortTitleUA": "Битум нефтяной кровельный 40/180",
+            "shortTitleRU": "Битум нефтяной кровельный 40/180",
+
+            "descriptionEN": "string",
+            "descriptionUA": "string",
+            "descriptionRU": darkDescRU7
+          },
+          {
+            "titleEN": "Битум строительный нефтяной БН 90/10 и 70/30",
+            "titleRU": "Битум строительный нефтяной БН 90/10 и 70/30",
+            "titleUA": "Битум строительный нефтяной БН 90/10 и 70/30",
+            "price": 1200,
+            "shortTitleEN": "Битум строительный нефтяной БН 90/10 и 70/30",
+            "shortTitleUA": "Битум строительный нефтяной БН 90/10 и 70/30",
+            "shortTitleRU": "Битум строительный нефтяной БН 90/10 и 70/30",
+
+            "descriptionEN": "string",
+            "descriptionUA": "string",
+            "descriptionRU": darkDescRU8
+          },
+          {
+            "titleEN": "Фасованные битумы",
+            "titleRU": "Фасованные битумы",
+            "titleUA": "Фасованные битумы",
+            "price": 1200,
+            "shortTitleEN": "Фасованные битумы",
+            "shortTitleUA": "Фасованные битумы",
+            "shortTitleRU": "Фасованные битумы",
+
+            "descriptionEN": "string",
+            "descriptionUA": "string",
+            "descriptionRU": darkDescRU9
+          },
+          {
+            "titleEN": "Вяжущее битумное комплексное",
+            "titleRU": "Вяжущее битумное комплексное",
+            "titleUA": "Вяжущее битумное комплексное",
+            "price": 1200,
+            "shortTitleEN": "Вяжущее битумное комплексное",
+            "shortTitleUA": "Вяжущее битумное комплексное",
+            "shortTitleRU": "Вяжущее битумное комплексное",
+
+            "descriptionEN": "string",
+            "descriptionUA": "string",
+            "descriptionRU": darkDescRU10
+          },
+        ]
       }
-    },
+    ];
+
+    for(let d of data) {
+      if(d.fuels)
+        d.fuels = (await db.collection('fuels').insertMany(d.fuels)).ops.map(f => f._id);
+      console.log(d.fuels);
+      await db.collection('products').insertOne(d);
+    }
+  },
 
   async down(db, client) {
     await db.collection('products')

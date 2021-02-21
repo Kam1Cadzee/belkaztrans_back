@@ -12,7 +12,7 @@ module.exports = {
           title: '2019',
         },
       ]);
-    },
+  },
 
   async down(db, client) {
     await db.collection('categories').drop();
