@@ -1,19 +1,6 @@
 import mongoose from 'mongoose';
-import BaseSchema, {BaseType} from '../schemas/BaseSchema';
-import mongoosePagination from 'mongoose-paginate-v2';
-
-const Schema = mongoose.Schema;
-
-const definition = {
-  title: {
-    type: String,
-    required: true
-  },
-};
-
-const CategorySchema = new Schema({
-  ...definition,
-});
+import {BaseType} from '../schemas/BaseSchema';
+import CategorySchema from '../schemas/CategorySchema';
 
 const CategoryModel = mongoose.model('Category', CategorySchema);
 

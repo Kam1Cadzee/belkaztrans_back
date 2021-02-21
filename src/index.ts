@@ -7,6 +7,7 @@ import ProductRoute from './routes/ProductRoute';
 import ContactRoute from './routes/ContactRoute';
 import NewsRoute from './routes/NewsRoute';
 import CategoryRoute from './routes/CategoryRoute';
+import FuelRoute from './routes/FuelRoute';
 import requestErrorHandler from './middlewares/requestErrorHandler';
 import {applyMiddleware} from './utils/applyMiddleware';
 const config = require('./config');
@@ -31,6 +32,7 @@ app.use(prefix + '/products', ProductRoute);
 app.use(prefix + '/contact', ContactRoute);
 app.use(prefix + '/news', NewsRoute);
 app.use(prefix + '/categories', CategoryRoute);
+app.use(prefix + '/fuels', FuelRoute);
 
 applyMiddleware(requestErrorHandler, app);
 

@@ -10,7 +10,7 @@ interface IBaseService<T, D> {
   getAll: (query?: FilterQuery<D>, o?: PaginateOptions) => Promise<IGet<T>>;
   getOne: (id: string) => T;
   update: (data: T, id: string) => Query<Document<T> | null, Document<T>>;
-  delete: (id: string) => Query<any, Document<T>>;
+  delete: (id: string) => any;
   getDocument: () => PaginateModel<Document<T>>;
 }
 

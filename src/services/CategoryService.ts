@@ -1,4 +1,4 @@
-import BaseService from './BaseService';
+import {BaseService} from './BaseService';
 import CategoryModel, {ICategory} from '../db/models/CategoryModel';
 
 export class CategoryService extends BaseService<ICategory> {

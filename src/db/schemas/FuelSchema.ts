@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import {Types} from 'mongoose';
 import BaseSchema, {BaseType} from './BaseSchema';
 
 const Schema = mongoose.Schema;
@@ -33,6 +34,10 @@ const definition = {
     type: String,
     required: true
   },
+  file: {
+    type: Types.ObjectId,
+    ref: 'File',
+  },
 } as const;
 
 const FuelSchema = new Schema({
@@ -49,6 +54,8 @@ interface IFuel extends BaseType {
   descriptionEN: string,
   descriptionUA: string,
   descriptionRU: string,
+
+  file: string;
 }
 
 export {IFuel}

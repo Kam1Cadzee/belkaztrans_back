@@ -2,15 +2,15 @@ import IBaseService, {IDQ, IGet, IPR} from '../interfaces/IBaseService';
 import {Document, DocumentQuery, FilterQuery, PaginateModel, PaginateOptions, PaginateResult, Query} from 'mongoose';
 import {query} from 'express';
 
-class BaseService<T, D = Document> implements IBaseService<T, D> {
+export class BaseService<T, D = Document> implements IBaseService<T, D> {
   protected document: PaginateModel<Document<T>>;
 
   create: (data: T) => Promise<Document<T>> = data => {
     return this.document.create(data);
   };
 
-  delete = id => {
-    return this.document.deleteOne({
+  delete = async id => {
+    return this.document.findByIdAndDelete({
       _id: id
     })
   };
@@ -37,5 +37,3 @@ class BaseService<T, D = Document> implements IBaseService<T, D> {
     return this.document;
   }
 }
-
-export default BaseService;

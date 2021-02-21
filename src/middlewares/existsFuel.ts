@@ -1,12 +1,12 @@
 import { Request, Response } from 'express';
-import ProductModel from '../db/models/ProductModel';
 import {Types} from 'mongoose';
 import {HTTP400Error} from '../utils/httpErrors';
+import FuelModel from '../db/models/FuelModel';
 
-const existProduct = async (req: Request, res: Response, next: any) => {
+const existFuel = async (req: Request, res: Response, next: any) => {
   try {
     const {id} = req.params;
-    const result = await ProductModel.exists({
+    const result = await FuelModel.exists({
       _id: Types.ObjectId(id)
     })
     if(result) {
@@ -19,4 +19,4 @@ const existProduct = async (req: Request, res: Response, next: any) => {
 };
 
 
-export default existProduct;
+export default existFuel;

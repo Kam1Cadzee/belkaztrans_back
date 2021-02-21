@@ -1,34 +1,6 @@
 import mongoose from 'mongoose';
-import BaseSchema, {BaseType} from '../schemas/BaseSchema';
-import mongoosePagination from 'mongoose-paginate-v2';
-
-const Schema = mongoose.Schema;
-
-const definition = {
-  date: {
-    type: Date,
-    required: true
-  },
-
-  textEN: {
-    type: String,
-    required: true
-  },
-  textRU: {
-    type: String,
-    required: true
-  },
-  textUA: {
-    type: String,
-    required: true
-  },
-};
-
-const NewsSchema = new Schema({
-  ...BaseSchema.obj,
-  ...definition,
-});
-NewsSchema.plugin(mongoosePagination);
+import {BaseType} from '../schemas/BaseSchema';
+import NewsSchema from '../schemas/NewsSchema';
 
 const NewsModel = mongoose.model('News', NewsSchema);
 
