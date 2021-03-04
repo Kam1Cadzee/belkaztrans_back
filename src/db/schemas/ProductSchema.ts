@@ -12,7 +12,7 @@ const definition = {
     type: String,
     required: true
   },
-  contact: {
+  contacts: [{
     fullNameEN: String,
     fullNameRU: String,
     fullNameUA: String,
@@ -21,7 +21,7 @@ const definition = {
     positionUA: String,
     phone: String,
     email: String,
-  }
+  }]
 };
 
 const ProductSchema = new Schema({

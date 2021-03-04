@@ -10,5 +10,7 @@ router.put('/:id', controller.update);
 router.delete('/:id', controller.delete);
 router.get('/', controller.getAll);
 router.get('/:id', controller.getOne);
+router.post('/:id/contacts', controller.createContact);
+router.delete('/:id/contacts/:idContact', controller.removeContact);
 
 export default router;

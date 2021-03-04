@@ -8,7 +8,7 @@ const GridFsStorage = require('multer-gridfs-storage');
 
 const dbURI = config.dbURI;
 
-const imageStorage = new GridFsStorage({
+const fileStorage = new GridFsStorage({
   url: dbURI,
   options: {useNewUrlParser: true, useUnifiedTopology: true},
   file: (req: any, file: any) => {
@@ -33,12 +33,12 @@ const fileFilter = (req: Request, file: any, cb: any) => {
 };
 
 const uploadFile = multer({
-  storage: imageStorage,
+  storage: fileStorage,
   fileFilter: fileFilter,
   limits: {
     fileSize: 40 * 1024 * 1024, // 40mb
   },
 }).single('file');
 
-const imageUploader = util.promisify(uploadFile);
-export {imageUploader};
+const fileUploader = util.promisify(uploadFile);
+export {fileUploader};

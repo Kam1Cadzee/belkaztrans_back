@@ -1,5 +1,5 @@
 import express from 'express';
-import {imageUploader} from '../middlewares/imageUploader';
+import {fileUploader} from '../middlewares/fileUploader';
 import {FuelController} from '../controllers/FuelController';
 import existFuel from '../middlewares/existsFuel';
 
@@ -9,8 +9,9 @@ const controller = new FuelController();
 
 router.post('/images/:id',
   existFuel,
-  imageUploader,
+  fileUploader,
   controller.uploadImage);
 router.get('/images/:id', controller.getImage);
+router.delete('/images/:id', controller.removeImage);
 
 export default router;

@@ -11,6 +11,7 @@ export class FuelController {
 
   constructor() {
     this.service = new FuelService();
+    this.serviceFile = new FileService();
   }
 
   getImage = async (req: Request, res: Response) => {
@@ -38,12 +39,12 @@ export class FuelController {
   uploadImage = async (req: Request, res: Response) => {
     try {
       if(!req.file) {
-        return res.status(404);
+        throw new HTTP404Error();
       }
       const {id} = req.params;
       const product:IFuel = await this.service.getOne(id);
       if(!product) {
-        return res.status(404);
+        throw new HTTP404Error();
       }
       if(product.file) {
         await FileModel.findByIdAndRemove(product.file)
@@ -54,8 +55,21 @@ export class FuelController {
       await this.service.update(product, product._id);
 
       return res.status(200).send({
-        file: product.file
+        _id: product.file,
+        filename: req.file.filename
       });
+    }
+    catch (e) {
+      throw new HTTP500Error('Error: ' + e);
+    }
+  };
+
+  removeImage = async (req: Request, res: Response) => {
+    try {
+      const {id} = req.params;
+      const result = await this.serviceFile.removeFile(id);
+
+      return res.status(200).send(result);
     }
     catch (e) {
       throw new HTTP500Error('Error: ' + e);

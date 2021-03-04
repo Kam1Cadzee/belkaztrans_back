@@ -1,12 +1,23 @@
-import mongoose = require('mongoose');
-const config = require('../config');
+import mongoose from 'mongoose';
+const {dbURI} = require('../config');
+const { config, up } = require('migrate-mongo');
 
+const myConfig = {
+  mongodb: {
+    url: dbURI,
+    options: { useNewUrlParser: true, useUnifiedTopology: true, }
+  },
+  migrationsDir: "./src/db/migrations/mongo/migrations",
+  changelogCollectionName: "changelog",
+  migrationFileExtension: ".js"
+};
 
+config.set(myConfig);
 
 async function createConnection() {
-  await mongoose.connect(config.dbURI, {useNewUrlParser: true, useUnifiedTopology: true});
-
+  await mongoose.connect(dbURI, {useNewUrlParser: true, useUnifiedTopology: true});
   const connection = mongoose.connection;
+  await up(connection);
 
   connection.on('error', function (err) {
     console.error('MongoDB connection error: ', err);
@@ -18,7 +29,7 @@ async function createConnection() {
 }
 
 async function getConnection(){
-  await mongoose.connect(config.dbURI, {useNewUrlParser: true, useUnifiedTopology: true});
+  await mongoose.connect(dbURI, {useNewUrlParser: true, useUnifiedTopology: true});
   return mongoose.connection;
 }
 

@@ -6,19 +6,14 @@ const config = {
   host: process.env.BE_HOST,
   database: process.env.BE_DATA_BASE,
   portDB: process.env.BE_PORT_DB,
-  isDev: process.env.BE_NODE_ENV,
-  port: process.env.BE_PORT,
-  dbURI: ''
+  isDev: process.env.NODE_ENV,
+  port: process.env.PORT,
+  dbURI: '',
+  secret: 'SBMFJ3KqptjBOLOnVWHkWvRE',
+  clientId: '908922527612-sq6814oj5h1m5eq9j0levtqod3tnij2a.apps.googleusercontent.com',
 };
 
-let dbURI = '';
-
-if(config.isDev) {
-  dbURI = 'mongodb://localhost:27017/test'
-}
-else {
-  dbURI = config.username && config.password ? `${config.username}:${config.password}@` : '';
-}
+const dbURI = `mongodb://${config.host}:${config.portDB}/${config.database}`;
 
 config.dbURI = dbURI;
 

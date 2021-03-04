@@ -1,6 +1,5 @@
-import IBaseService, {IDQ, IGet, IPR} from '../interfaces/IBaseService';
-import {Document, DocumentQuery, FilterQuery, PaginateModel, PaginateOptions, PaginateResult, Query} from 'mongoose';
-import {query} from 'express';
+import IBaseService from '../interfaces/IBaseService';
+import {Document, FilterQuery, PaginateModel, PaginateOptions} from 'mongoose';
 
 export class BaseService<T, D = Document> implements IBaseService<T, D> {
   protected document: PaginateModel<Document<T>>;
@@ -15,8 +14,7 @@ export class BaseService<T, D = Document> implements IBaseService<T, D> {
     })
   };
 
-  // @ts-ignore
-  getAll: (query?: FilterQuery<D>, options?: PaginateOptions) => any = async (query = {}, options = {}) => {
+  getAll: (query?: FilterQuery<D> | any, options?: PaginateOptions) => any = async (query = {}, options = {}) => {
     if(this.document.paginate) {
       return await this.document.paginate(query, options);
     }
@@ -27,10 +25,12 @@ export class BaseService<T, D = Document> implements IBaseService<T, D> {
     return this.document.findById(id) as any;
   };
 
-  update: (data, id) => Query<Document<T> | null, Document<T>> = (data, id) => {
+  update = (data, id) => {
     return this.document.findByIdAndUpdate({
       _id: id
-    }, data);
+    }, data, {
+      new: true
+    });
   };
 
   getDocument = () => {

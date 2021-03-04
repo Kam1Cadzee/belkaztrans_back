@@ -18,6 +18,7 @@ const desc1 = `<article class="product-content">
       Ценообразование — по фиксированным ценам/ поставки по формульному ценообразованию, основанного на котировках
       международных бирж (котировки агентств “Argus” и “Platts”).
     </article>`;
+
 const desc2 = `<article class="product-content">
       <p class="caption">Бензин неэтилированный АИ-95-К5-Евро, выпускаемый по СТБ 1656-2011 соответствует:</p>
       <ul class="list">
@@ -38,6 +39,7 @@ const desc2 = `<article class="product-content">
       Ценообразование — по фиксированным ценам/ поставки по формульному ценообразованию, основанного на котировках
       международных бирж (котировки агентств “Argus” и “Platts”).
     </article>`;
+
 const desc3 = `<article class="product-content">
       <p class="caption">Бензин неэтилированный АИ-92-К5-Евро, выпускаемый по СТБ 1656-2011 соответствует:</p>
       <ul class="list">
@@ -187,6 +189,7 @@ const darkDescRU10 = `<article class="product-content">В сотрудничес
 
 module.exports = {
   async up(db, client) {
+    console.log(1)
     const data = [
       {
         "titleEN": "Железнодорожное экспедирование грузов",
@@ -426,23 +429,26 @@ module.exports = {
     for(let d of data) {
       if(d.fuels)
         d.fuels = (await db.collection('fuels').insertMany(d.fuels)).ops.map(f => f._id);
-      console.log(d.fuels);
       await db.collection('products').insertOne(d);
     }
   },
 
   async down(db, client) {
+    const codes = ['cargo', 'light', 'dark'];
+    const res = await db.collection('products')
+      .find({
+        code: {$in: codes}
+      }).toArray();
+    const ids = res.map(p => p.fuels || []).flat();
+
     await db.collection('products')
-      .deleteOne({
-        code: "cargo"
+      .deleteMany({
+        code: {$in: codes}
       });
-    await db.collection('products')
-      .deleteOne({
-        code: "light"
-      });
-    await db.collection('products')
-      .deleteOne({
-        code: "dark"
+
+    await db.collection('fuels')
+      .deleteMany({
+        _id: {$in: ids}
       });
   }
 };

@@ -36,13 +36,19 @@ const definition = {
   },
   file: {
     type: Types.ObjectId,
-    ref: 'File',
+    ref: 'file',
   },
 } as const;
 
 const FuelSchema = new Schema({
   ...BaseSchema.obj,
   ...definition,
+}).pre('findOne', function (next: any) {
+  this.populate({ path: 'file', select: 'filename' });
+  next();
+}).pre('find', function (next: any) {
+  this.populate({ path: 'file', select: 'filename' });
+  next();
 });
 
 interface IFuel extends BaseType {
