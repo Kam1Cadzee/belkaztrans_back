@@ -11,7 +11,8 @@ import FuelRoute from './routes/FuelRoute';
 import requestErrorHandler from './middlewares/requestErrorHandler';
 import {applyMiddleware} from './utils/applyMiddleware';
 import verifyOAuth from './middlewares/verifyOAuth';
-import {OAuth2Client} from 'google-auth-library';
+import verifyEmail from './middlewares/verifyEmail';
+import UserRoute from './routes/UserRoute';
 const config = require('./config');
 
 const prefix = '/api/v1';
@@ -36,29 +37,9 @@ app.use(prefix + '/contacts', ContactRoute);
 app.use(prefix + '/news', NewsRoute);
 app.use(prefix + '/categories', CategoryRoute);
 app.use(prefix + '/fuels', FuelRoute);
+app.use(prefix + '/users', UserRoute);
+app.post(prefix + '/verify', verifyEmail);
 
-app.post(prefix + '/verify', async (req, res) => {
-  const client = new OAuth2Client({
-    clientId: config.clientId,
-    clientSecret: config.secret,
-  });
-
-  try {
-    const r1 = await client.getTokenInfo(req.body.token);
-    const r2 = await client.verifyIdToken({
-      idToken: req.body.tokenId,
-      audience: config.clientId
-    });
-
-    return res.send({
-      r1, r2
-    })
-  }
-  catch (e) {
-
-  }
-  res.send('ok');
-});
 //ya29.a0AfH6SMAQHIk7VZP2BtbIdpyYfcu3vTeWYL-y1-uP4TqWYD_rBeydB92cGHwln0bH9_6hKc7HWnWOEsQghRZZ6Ac7yzvaSXTfem5vXDHu7R0V1R3yOw9ik7Q92U_5T5U_g2JMGp6rDYCCYI9DhqEX8xxsi5po
 applyMiddleware(requestErrorHandler, app);
 

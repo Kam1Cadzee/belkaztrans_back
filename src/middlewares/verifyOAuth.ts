@@ -16,11 +16,7 @@ const verifyOAuth = async (req: Request, res: Response, next: any) => {
   });
 
  try {
-   console.log(await client.getTokenInfo(token));
-   client.verifyIdToken({
-     idToken: '',
-     audience: config.clientId
-   });
+   await client.getTokenInfo(token);
    next();
  }
  catch (e) {
