@@ -11,6 +11,8 @@ const config = {
   dbURI: '',
   secret: 'SBMFJ3KqptjBOLOnVWHkWvRE',
   clientId: '908922527612-sq6814oj5h1m5eq9j0levtqod3tnij2a.apps.googleusercontent.com',
+  emailUser: 'belkaztransuser@gmail.com',
+  emailPassword: 'belkaztrans'
 };
 
 const dbURI = `mongodb://${config.host}:${config.portDB}/${config.database}`;

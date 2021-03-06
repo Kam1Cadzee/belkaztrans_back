@@ -1,6 +1,7 @@
 import {Request, Response} from 'express';
 import {ContactService} from '../services/ContactService';
 import {HTTP500Error} from '../utils/httpErrors';
+import sendEmail from '../utils/sendEmail';
 
 export class ContactController {
   private service: ContactService;
@@ -12,6 +13,8 @@ export class ContactController {
   create = async (req: Request, res: Response) => {
     try {
       const r = await this.service.create(req.body);
+      console.log(r)
+      await sendEmail(req.body);
       return res.status(200).send(r);
     } catch (e) {
       throw new HTTP500Error('Error: ' + e);
